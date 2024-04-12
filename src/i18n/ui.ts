@@ -24,6 +24,9 @@ export const ui = {
         'nav.about': 'À propos',
         'nav.work': 'Travail',
 
+        'main-head.title' : 'Bryan Chambron: Portfolio',
+        'main-head.description' : 'Le portfolio de Bryan Chambron',
+
         'index.header.hero.title': 'Bonjour, je suis Bryan Chambron',
         'index.header.hero.tagline': 'Je suis animateur radio, disponible dans toute la France !',
 
