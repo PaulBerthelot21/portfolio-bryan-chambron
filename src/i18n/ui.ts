@@ -22,7 +22,7 @@ export const ui = {
     fr: {
         'nav.home': 'Accueil',
         'nav.about': 'À propos',
-        'nav.work': 'Travail',
+        'nav.work': 'Expériences',
 
         'main-head.title' : 'Bryan Chambron: Portfolio',
         'main-head.description' : 'Le portfolio de Bryan Chambron',
@@ -36,10 +36,23 @@ export const ui = {
 
         'index.header.img.alt' : 'Bryan Chambron positionnée de trois quarts, retardant la caméra d\'un regard sérieux et déterminé',
 
-
         'index.main.header.title' : 'Mes expériences',
-        'index.main.header.description' : 'Take a look below at some of my featured work for clients from the past few years.',
+        'index.main.header.description' : 'Jetez un coup d\'œil ci-dessous à quelques-unes de mes expériences',
         'index.main.cta.all' : 'Voir tout',
+
+        'skills.title.example-one' : '',
+        'skills.title.example-two' : '',
+        'skills.title.example-three' : '',
+
+        'skills.description.example-one' : '',
+        'skills.description.example-two' : '',
+        'skills.description.example-three' : '',
+
+        'work.slug.back' : 'Expériences',
+        'work.base-layout.title' : 'Mes expériences | Bryan Chambron',
+        'work.base-layout.description' : 'Découvrez mes expériences les plus récentes',
+        'work.hero.title' : 'Mes expériences',
+        'work.hero.description' : 'Découvrez mes expériences les plus récentes',
 
         'contact-cta.title' : 'Intéressé par mon profil ?',
         'contact-cta.button' : 'Envoyer moi un message',
