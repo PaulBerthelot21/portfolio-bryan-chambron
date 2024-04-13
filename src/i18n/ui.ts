@@ -36,6 +36,16 @@ export const ui = {
 
         'index.header.img.alt' : 'Bryan Chambron positionnée de trois quarts, retardant la caméra d\'un regard sérieux et déterminé',
 
+
+        'index.main.header.title' : 'Mes expériences',
+        'index.main.header.description' : 'Take a look below at some of my featured work for clients from the past few years.',
+        'index.main.cta.all' : 'Voir tout',
+
+        'contact-cta.title' : 'Intéressé par mon profil ?',
+        'contact-cta.button' : 'Envoyer moi un message',
+
+        'footer.copyright.webmaster' : 'Développé en France par ',
+
         '404.head.title' : 'Non Trouvé',
         '404.head.description' : 'Erreur 404 — Cette page n\'a pas été trouvé',
         '404.hero.title' : 'Page Non Trouvé',
