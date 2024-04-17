@@ -40,13 +40,25 @@ export const ui = {
         'index.main.header.description' : 'Jetez un coup d\'œil ci-dessous à quelques-unes de mes expériences',
         'index.main.cta.all' : 'Voir tout',
 
-        'skills.title.example-one' : '',
-        'skills.title.example-two' : '',
-        'skills.title.example-three' : '',
+        'index.main.realisation.title' : 'Réalisations',
+        'index.main.realisation.description' : 'Au cours de mes expériences j\'ai pu prendre part à diverses réalisations.',
 
-        'skills.description.example-one' : '',
-        'skills.description.example-two' : '',
-        'skills.description.example-three' : '',
+        'about.main.title' : 'A propos',
+        'about.main.description' : 'Merci de vous être arrêté. Lisez ci-dessous pour en savoir plus sur moi-même et mon parcours.',
+
+        'about.section.history.title' : 'Histoire',
+        'about.section.history.description-part-1' : 'Lorem ipsum',
+
+        'about.section.education.title' : 'Scolarité',
+        'about.section.education.description' : 'Lorem ipsum',
+
+        'skills.title.example-one' : 'Réactif',
+        'skills.title.example-two' : 'Positif',
+        'skills.title.example-three' : 'Créatif',
+
+        'skills.description.example-one' : 'Lorem ipsum',
+        'skills.description.example-two' : 'Lorem ipsum',
+        'skills.description.example-three' : 'Lorem ipsum',
 
         'work.slug.back' : 'Expériences',
         'work.base-layout.title' : 'Mes expériences | Bryan Chambron',
