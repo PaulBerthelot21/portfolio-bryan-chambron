@@ -1,70 +1,46 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+import Layout from "../../layouts/Layout.astro";
+import { getLangFromUrl, useTranslations } from "../../i18n/ui";
+import WelcomeSection from "../../components/WelcomeSection.astro";
+import SocialFeeds from "../../components/SocialFeeds.astro";
 
 export function getStaticPaths() {
-  return [
-    // Route pour la page française (par défaut)
-    { params: { lang: undefined } },
-    // Route pour la page anglaise
-    { params: { lang: 'en' } },
-  ];
+	return [
+		// Route pour la page française (par défaut)
+		{ params: { lang: undefined } },
+		// Route pour la page anglaise
+		{ params: { lang: "en" } },
+	];
 }
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const ctaLink = lang === "fr" ? "/about/" : "/en/about/";
 ---
 
-<Layout title={t('welcome.title')}>
-	<div class="flex flex-col items-center justify-center min-h-[80vh] text-center p-8">
-		<div class="flex flex-col md:flex-row items-center md:text-left gap-8 md:gap-16 max-w-[1200px] w-full">
-			<div class="flex-1">
-				<h1 class="text-[3.5rem] md:text-[3.5rem] mb-4 bg-gradient-to-br from-[#333] to-[#666] bg-clip-text text-transparent">{t('welcome.title')}</h1>
-				<p class="text-2xl mb-8 text-[#666]">{t('welcome.subtitle')}</p>
-				<div class="flex items-center mb-8 gap-2 md:justify-start justify-center">
-					<span class="inline-block w-[3px] h-[15px] bg-[#333] rounded-sm wave-1"></span>
-					<span class="inline-block w-[3px] h-[25px] bg-[#333] rounded-sm wave-2"></span>
-					<span class="inline-block w-[3px] h-[35px] bg-[#333] rounded-sm wave-3"></span>
-					<span class="inline-block w-[3px] h-[20px] bg-[#333] rounded-sm wave-4"></span>
-				</div>
-			</div>
-			<div class="relative flex-shrink-0">
-				<img src="/assets/bryan_chambron_1.heic" alt="Bryan Chambron" class="w-[220px] h-[220px] md:w-[300px] md:h-[300px] object-cover rounded-full shadow-lg border-4 border-white" />
-				<div class="absolute top-[10px] right-[10px] bg-[#ff3e3e] text-white py-2 px-4 rounded-[20px] font-bold shadow-md pulse-animation">ON AIR</div>
-			</div>
+<Layout title={t("welcome.title")}>
+	<!-- Section d'accueil avec hauteur minimale -->
+	<section class="py-16 md:py-24">
+		<div class="container mx-auto px-4 max-w-7xl">
+			<WelcomeSection
+				title={t("welcome.title")}
+				subtitle={t("welcome.subtitle")}
+				ctaText={t("welcome.cta")}
+				ctaLink={ctaLink}
+				profileImageSrc="/assets/bryan_chambron_1.heic"
+				profileImageAlt="Bryan Chambron"
+			/>
 		</div>
-	</div>
+	</section>
+
+	<!-- Section des réseaux sociaux avec couleur de fond différente -->
+	<SocialFeeds
+		instagramUsername="bryan_chambron"
+		twitchUsername="afstream_"
+		showTwitchChat={true}
+		title={lang === "fr"
+			? "Suivez-moi sur les réseaux"
+			: "Follow me on social media"}
+	/>
 </Layout>
 
-<style>
-	.pulse-animation {
-		animation: pulse 2s infinite;
-	}
-
-	@keyframes pulse {
-		0% { opacity: 1; }
-		50% { opacity: 0.7; }
-		100% { opacity: 1; }
-	}
-
-	@keyframes wave {
-		0%, 100% { transform: scaleY(0.5); }
-		50% { transform: scaleY(1); }
-	}
-
-	.wave-1 {
-		animation: wave 1s infinite;
-	}
-
-	.wave-2 {
-		animation: wave 1s infinite 0.2s;
-	}
-
-	.wave-3 {
-		animation: wave 1s infinite 0.4s;
-	}
-
-	.wave-4 {
-		animation: wave 1s infinite 0.6s;
-	}
-</style> 

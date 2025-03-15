@@ -1,0 +1,65 @@
+---
+// TwitchFeed.astro - Composant pour afficher le flux Twitch
+interface Props {
+  username: string;
+  showChat?: boolean;
+}
+
+const { username, showChat = true } = Astro.props;
+const hostname = Astro.url.hostname;
+---
+
+<div class="bg-white rounded-xl shadow-md overflow-hidden h-full flex flex-col transform transition-transform hover:shadow-lg hover:-translate-y-1 duration-300">
+  <div class="bg-[#9146FF] p-4">
+    <h3 class="text-white font-bold flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M3.857 0 1 2.857v10.286h3.429V16l2.857-2.857H9.57L14.714 8V0H3.857zm9.714 7.429-2.285 2.285H9l-2 2v-2H4.429V1.143h9.142v6.286z"/>
+        <path d="M11.857 3.143h-1.143V6.57h1.143V3.143zm-3.143 0H7.571V6.57h1.143V3.143z"/>
+      </svg>
+      <span class="flex-1">Twitch</span>
+      <span class="text-sm font-normal opacity-90 bg-white/20 px-2 py-0.5 rounded-full">@{username}</span>
+    </h3>
+  </div>
+  <div class="p-4 flex-grow flex flex-col">
+    <!-- Twitch Embed -->
+    <div class={`relative ${showChat ? 'h-[240px]' : 'h-[380px]'} w-full overflow-hidden`}>
+      <iframe
+        src={`https://player.twitch.tv/?channel=${username}&parent=${import.meta.env.DEV ? 'localhost' : hostname}`}
+        class="absolute inset-0 w-full h-full"
+        allowfullscreen="true"
+        loading="lazy"
+        title={`Twitch stream de ${username}`}>
+      </iframe>
+    </div>
+    
+    {showChat && (
+      <div class="h-[140px] mt-3 border-t border-gray-100">
+        <iframe
+          src={`https://www.twitch.tv/embed/${username}/chat?parent=${import.meta.env.DEV ? 'localhost' : hostname}`}
+          class="w-full h-full"
+          loading="lazy"
+          title={`Chat Twitch de ${username}`}>
+        </iframe>
+      </div>
+    )}
+  </div>
+  <div class="bg-gray-50 p-3 border-t border-gray-100 flex justify-between items-center">
+    <a 
+      href={`https://www.twitch.tv/${username}`} 
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-[#9146FF] font-medium hover:text-purple-800 transition-colors flex items-center"
+    >
+      Voir la chaîne complète
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+      </svg>
+    </a>
+    <span class="text-xs text-gray-500 flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+      </svg>
+      Stream en direct
+    </span>
+  </div>
+</div> 

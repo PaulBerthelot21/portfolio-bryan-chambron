@@ -13,7 +13,7 @@ const lang = getLangFromUrl(Astro.url);
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -21,9 +21,9 @@ const lang = getLangFromUrl(Astro.url);
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="flex flex-col min-h-screen">
 		<Header />
-		<main>
+		<main class="flex-grow w-full">
 			<slot />
 		</main>
 		<Footer />
@@ -35,7 +35,6 @@ const lang = getLangFromUrl(Astro.url);
 	body {
 		margin: 0;
 		width: 100%;
-		height: 100%;
 	}
 	
 	header {
@@ -60,11 +59,5 @@ const lang = getLangFromUrl(Astro.url);
 		display: flex;
 		align-items: center;
 		gap: 2rem;
-	}
-	
-	main {
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 2rem;
 	}
 </style>
