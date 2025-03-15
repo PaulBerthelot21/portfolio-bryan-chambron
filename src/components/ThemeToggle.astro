@@ -11,11 +11,13 @@ import { Icon } from 'astro-icon/components';
 <script>
   // Fonction pour définir et appliquer le thème
   function setTheme(theme: 'light' | 'dark') {
+    const rootElement = document.documentElement;
+    
     if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
+      rootElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
     } else {
-      document.documentElement.classList.remove('dark');
+      rootElement.classList.remove('dark');
       localStorage.setItem('theme', 'light');
     }
     
@@ -35,10 +37,9 @@ import { Icon } from 'astro-icon/components';
   // Initialiser le thème au chargement de la page
   document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    // Appliquer le thème enregistré ou la préférence système
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    // Appliquer le thème enregistré ou par défaut le mode clair
+    if (savedTheme === 'dark') {
       setTheme('dark');
     } else {
       setTheme('light');

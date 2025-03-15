@@ -32,7 +32,7 @@ const flagEmojis: Record<string, string> = {
 ---
 
 <div class="language-picker relative ml-2">
-  <button id="language-dropdown-button" class="lang-glass flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium text-gray-700 dark:text-gray-200 cursor-pointer">
+  <button id="language-dropdown-button" class="lang-glass flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium text-primary-500 dark:text-primary-400 cursor-pointer">
     <span class="text-lg mr-1">{flagEmojis[currentLang]}</span>
     <span>{currentLang.toUpperCase()}</span>
     <svg class="w-3 h-3 fill-current text-primary-500 dark:text-primary-400 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -40,7 +40,7 @@ const flagEmojis: Record<string, string> = {
     </svg>
   </button>
   
-  <div id="language-dropdown" class="language-dropdown absolute right-0 mt-2 py-2 w-32 lang-glass rounded-lg shadow-lg z-50 hidden">
+  <div id="language-dropdown" class="language-dropdown absolute right-0 top-full mt-2 py-2 w-32 lang-glass rounded-lg shadow-lg z-50 hidden">
     {
       Object.entries(languages).map(([lang, label]) => (
         <a 
@@ -69,7 +69,7 @@ const flagEmojis: Record<string, string> = {
     position: relative;
   }
   
-  .dark .lang-glass {
+  :root.dark .lang-glass {
     background: rgba(40, 40, 60, 0.35);
     border: 1px solid rgba(var(--color-primary-rgb), 0.25);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -79,7 +79,7 @@ const flagEmojis: Record<string, string> = {
     box-shadow: 0 6px 16px rgba(var(--color-primary-rgb), 0.15);
   }
   
-  .dark .lang-glass:hover {
+  :root.dark .lang-glass:hover {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
   }
   

@@ -31,5 +31,65 @@ const t = useTranslations(lang);
         />
       </div>
     </div>
+
+    <!-- Section Éducation -->
+    <div class="mt-12">
+      <h2 class="text-3xl font-bold mb-6">{t('about.education.title') || 'Éducation'}</h2>
+      <div class="space-y-6">
+        <div class="bg-white/5 p-6 rounded-lg shadow-sm">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="text-xl font-semibold">{t('about.education.degree1.name') || 'Diplôme d\'Ingénieur'}</h3>
+            <span class="text-sm opacity-75">{t('about.education.degree1.years') || '2020 - 2023'}</span>
+          </div>
+          <p class="text-lg mb-1">{t('about.education.degree1.institution') || 'École d\'Ingénieurs'}</p>
+          <p class="opacity-80">{t('about.education.degree1.description') || 'Description de votre formation, spécialisations et projets importants.'}</p>
+        </div>
+        
+        <div class="bg-white/5 p-6 rounded-lg shadow-sm">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="text-xl font-semibold">{t('about.education.degree2.name') || 'DUT Informatique'}</h3>
+            <span class="text-sm opacity-75">{t('about.education.degree2.years') || '2018 - 2020'}</span>
+          </div>
+          <p class="text-lg mb-1">{t('about.education.degree2.institution') || 'IUT'}</p>
+          <p class="opacity-80">{t('about.education.degree2.description') || 'Description de votre formation, spécialisations et projets importants.'}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Expériences Professionnelles -->
+    <div class="mt-16">
+      <h2 class="text-3xl font-bold mb-6">{t('about.experience.title') || 'Expériences Professionnelles'}</h2>
+      <div class="space-y-8">
+        <div class="border-l-4 border-primary pl-6 relative">
+          <div class="absolute w-3 h-3 bg-primary rounded-full -left-[6.5px] top-1"></div>
+          <div class="mb-2">
+            <h3 class="text-xl font-semibold">{t('about.experience.job1.title') || 'Développeur Full Stack'}</h3>
+            <p class="text-lg">{t('about.experience.job1.company') || 'Entreprise'}</p>
+            <p class="text-sm opacity-75 mb-2">{t('about.experience.job1.period') || 'Janvier 2023 - Présent'}</p>
+          </div>
+          <p class="opacity-80">{t('about.experience.job1.description') || 'Description de vos responsabilités, réalisations et technologies utilisées.'}</p>
+        </div>
+        
+        <div class="border-l-4 border-primary pl-6 relative">
+          <div class="absolute w-3 h-3 bg-primary rounded-full -left-[6.5px] top-1"></div>
+          <div class="mb-2">
+            <h3 class="text-xl font-semibold">{t('about.experience.job2.title') || 'Développeur Front-End'}</h3>
+            <p class="text-lg">{t('about.experience.job2.company') || 'Entreprise précédente'}</p>
+            <p class="text-sm opacity-75 mb-2">{t('about.experience.job2.period') || 'Juin 2021 - Décembre 2022'}</p>
+          </div>
+          <p class="opacity-80">{t('about.experience.job2.description') || 'Description de vos responsabilités, réalisations et technologies utilisées.'}</p>
+        </div>
+        
+        <div class="border-l-4 border-primary pl-6 relative">
+          <div class="absolute w-3 h-3 bg-primary rounded-full -left-[6.5px] top-1"></div>
+          <div class="mb-2">
+            <h3 class="text-xl font-semibold">{t('about.experience.job3.title') || 'Stage en Développement Web'}</h3>
+            <p class="text-lg">{t('about.experience.job3.company') || 'Entreprise de stage'}</p>
+            <p class="text-sm opacity-75 mb-2">{t('about.experience.job3.period') || 'Janvier 2021 - Mai 2021'}</p>
+          </div>
+          <p class="opacity-80">{t('about.experience.job3.description') || 'Description de vos responsabilités, réalisations et technologies utilisées.'}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </Layout> 
