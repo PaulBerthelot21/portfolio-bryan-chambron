@@ -15,13 +15,17 @@ interface Props {
 const { title, subtitle, ctaText, ctaLink, profileImageSrc, profileImageAlt } = Astro.props;
 ---
 
-<div class="flex flex-col md:flex-row items-center md:text-left gap-8 md:gap-16 max-w-[1200px] w-full">
-  <div class="flex-1">
-    <h1 class="text-[3.5rem] md:text-[3.5rem] mb-4 bg-gradient-to-br from-[#333] to-[#666] bg-clip-text text-transparent">{title}</h1>
-    <p class="text-2xl mb-8 text-[#666]">{subtitle}</p>
-    <div class="mb-8">
-      <RadioWave />
+<section class="py-16 md:py-24">
+  <div class="container mx-auto px-4 max-w-7xl">
+    <div class="flex flex-col md:flex-row items-center md:text-left gap-8 md:gap-16 max-w-[1200px] w-full">
+      <div class="flex-1">
+        <h1 class="text-[3.5rem] md:text-[3.5rem] mb-4 bg-gradient-to-br from-[#333] to-[#666] bg-clip-text text-transparent">{title}</h1>
+        <p class="text-2xl mb-8 text-[#666]">{subtitle}</p>
+        <div class="mb-8">
+          <RadioWave />
+        </div>
+      </div>
+      <ProfileImage imageSrc={profileImageSrc} altText={profileImageAlt} />
     </div>
   </div>
-  <ProfileImage imageSrc={profileImageSrc} altText={profileImageAlt} />
-</div> 
+</section> 

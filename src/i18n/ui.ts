@@ -25,7 +25,11 @@ export const ui = {
     'footer.developed': 'Développé par',
     'footer.rights': 'Tous droits réservés.',
     'footer.legal': 'Mentions légales',
-    'footer.privacy': 'Politique de confidentialité'
+    'footer.privacy': 'Politique de confidentialité',
+    'testimonials.title': 'Ce qu\'ils disent de moi',
+    'services.title': 'Mes services',
+    'services.subtitle': 'Découvrez les prestations que je propose pour répondre à vos besoins',
+    'social.title': 'Suivez-moi sur les réseaux'
   },
   en: {
     'nav.title': 'Bryan Chambron',
@@ -46,7 +50,11 @@ export const ui = {
     'footer.developed': 'Developed by',
     'footer.rights': 'All rights reserved.',
     'footer.legal': 'Legal notice',
-    'footer.privacy': 'Privacy policy'
+    'footer.privacy': 'Privacy policy',
+    'testimonials.title': 'What They Say About Me',
+    'services.title': 'My Services',
+    'services.subtitle': 'Discover the services I offer to meet your needs',
+    'social.title': 'Follow me on social media'
   },
 } as const;
 

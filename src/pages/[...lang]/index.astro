@@ -3,6 +3,10 @@ import Layout from "../../layouts/Layout.astro";
 import { getLangFromUrl, useTranslations } from "../../i18n/ui";
 import WelcomeSection from "../../components/WelcomeSection.astro";
 import SocialFeeds from "../../components/SocialFeeds.astro";
+import Testimonials from "../../components/Testimonials.astro";
+import Services from "../../components/Services.astro";
+import { getTestimonials } from "../../data/testimonials";
+import { getServices } from "../../data/services";
 
 export function getStaticPaths() {
 	return [
@@ -16,31 +20,39 @@ export function getStaticPaths() {
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const ctaLink = lang === "fr" ? "/about/" : "/en/about/";
+
+// Récupération des données depuis les fichiers externes
+const testimonials = getTestimonials(lang);
+const services = getServices(lang);
 ---
 
 <Layout title={t("welcome.title")}>
-	<!-- Section d'accueil avec hauteur minimale -->
-	<section class="py-16 md:py-24">
-		<div class="container mx-auto px-4 max-w-7xl">
-			<WelcomeSection
-				title={t("welcome.title")}
-				subtitle={t("welcome.subtitle")}
-				ctaText={t("welcome.cta")}
-				ctaLink={ctaLink}
-				profileImageSrc="/assets/bryan_chambron_1.heic"
-				profileImageAlt="Bryan Chambron"
-			/>
-		</div>
-	</section>
 
-	<!-- Section des réseaux sociaux avec couleur de fond différente -->
+	<WelcomeSection
+		title={t("welcome.title")}
+		subtitle={t("welcome.subtitle")}
+		ctaText={t("welcome.cta")}
+		ctaLink={ctaLink}
+		profileImageSrc="/assets/bryan_chambron_1.heic"
+		profileImageAlt="Bryan Chambron"
+	/>
+
+	<Services
+		title={t("services.title")}
+		subtitle={t("services.subtitle")}
+		services={services}
+	/>
+
+	<Testimonials
+		title={t("testimonials.title")}
+		testimonials={testimonials}
+	/>
+
 	<SocialFeeds
 		instagramUsername="bryan_chambron"
 		twitchUsername="afstream_"
 		showTwitchChat={true}
-		title={lang === "fr"
-			? "Suivez-moi sur les réseaux"
-			: "Follow me on social media"}
+		title={t("social.title")}
 	/>
 </Layout>
 

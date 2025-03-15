@@ -1,0 +1,46 @@
+---
+interface Testimonial {
+  name: string;
+  role: string;
+  content: string;
+  avatar?: string;
+}
+
+interface Props {
+  title: string;
+  testimonials: Testimonial[];
+}
+
+const { title, testimonials } = Astro.props;
+---
+
+<section class="py-16 md:py-24">
+  <div class="container mx-auto px-4 max-w-7xl">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">{title}</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {testimonials.map((testimonial) => (
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+          <div class="flex items-center mb-4">
+            {testimonial.avatar ? (
+              <img 
+                src={testimonial.avatar} 
+                alt={testimonial.name} 
+                class="w-12 h-12 rounded-full mr-4 object-cover"
+              />
+            ) : (
+              <div class="w-12 h-12 rounded-full mr-4 bg-gray-500 flex items-center justify-center text-white font-bold">
+                {testimonial.name.charAt(0)}
+              </div>
+            )}
+            <div>
+              <h3 class="font-semibold text-lg">{testimonial.name}</h3>
+              <p class="text-gray-600 text-sm">{testimonial.role}</p>
+            </div>
+          </div>
+          <p class="text-gray-700 italic">{testimonial.content}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section> 
