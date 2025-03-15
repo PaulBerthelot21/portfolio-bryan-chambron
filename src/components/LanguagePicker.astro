@@ -1,0 +1,141 @@
+---
+import { languages, getLangFromUrl } from '../i18n/ui';
+
+// Récupérer la langue actuelle et le chemin
+const url = Astro.url;
+const currentLang = getLangFromUrl(url);
+const currentPath = url.pathname;
+
+// Fonction pour obtenir l'URL équivalente dans l'autre langue
+function getLocalizedPath(targetLang: string, currentPath: string): string {
+  // Si on est sur la page d'accueil
+  if (currentPath === '/' || currentPath === '/en/' || currentPath === '/en') {
+    return targetLang === 'fr' ? '/' : '/en/';
+  }
+  
+  // Pour les autres pages
+  if (currentLang === 'fr') {
+    // De français vers anglais
+    return `/en${currentPath}`;
+  } else {
+    // De anglais vers français
+    // Enlever le préfixe /en/ du chemin
+    return currentPath.replace(/^\/en\/?/, '/');
+  }
+}
+
+// Emojis de drapeaux pour chaque langue
+const flagEmojis: Record<string, string> = {
+  fr: "🇫🇷",
+  en: "🇬🇧"
+};
+---
+
+<div class="language-picker relative ml-2">
+  <button id="language-dropdown-button" class="lang-glass flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium text-gray-700 dark:text-gray-200 cursor-pointer">
+    <span class="text-lg mr-1">{flagEmojis[currentLang]}</span>
+    <span>{currentLang.toUpperCase()}</span>
+    <svg class="w-3 h-3 fill-current text-primary-500 dark:text-primary-400 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>
+    </svg>
+  </button>
+  
+  <div id="language-dropdown" class="language-dropdown absolute right-0 mt-2 py-2 w-32 lang-glass rounded-lg shadow-lg z-50 hidden">
+    {
+      Object.entries(languages).map(([lang, label]) => (
+        <a 
+          href={getLocalizedPath(lang, currentPath)}
+          class:list={[
+            "flex items-center gap-2 px-4 py-2 text-sm hover:bg-primary-50/30 dark:hover:bg-primary-900/30 transition-colors duration-200", 
+            { "text-primary-600 dark:text-primary-400 font-semibold": lang === currentLang }
+          ]}
+        >
+          <span class="text-lg">{flagEmojis[lang]}</span>
+          <span>{label}</span>
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .lang-glass {
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .dark .lang-glass {
+    background: rgba(40, 40, 60, 0.35);
+    border: 1px solid rgba(var(--color-primary-rgb), 0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .lang-glass:hover {
+    box-shadow: 0 6px 16px rgba(var(--color-primary-rgb), 0.15);
+  }
+  
+  .dark .lang-glass:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Effet de brillance au clic */
+  .clicked::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(var(--color-primary-rgb), 0.4) 0%, transparent 70%);
+    opacity: 0;
+    animation: click-ripple 0.7s ease-out;
+  }
+  
+  @keyframes click-ripple {
+    0% {
+      transform: scale(0.3);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(3);
+      opacity: 0;
+    }
+  }
+</style>
+
+<script>
+  // Script pour gérer le dropdown de langues
+  document.addEventListener('DOMContentLoaded', () => {
+    const dropdownButton = document.getElementById('language-dropdown-button');
+    const dropdown = document.getElementById('language-dropdown');
+    
+    if (dropdownButton && dropdown) {
+      // Toggle dropdown on button click
+      dropdownButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle('hidden');
+        
+        // Ajouter un effet de brillance au clic
+        dropdownButton.classList.add('clicked');
+        setTimeout(() => {
+          dropdownButton.classList.remove('clicked');
+        }, 700);
+      });
+      
+      // Close dropdown when clicking elsewhere
+      document.addEventListener('click', () => {
+        dropdown.classList.add('hidden');
+      });
+      
+      // Prevent dropdown from closing when clicking inside it
+      dropdown.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+    }
+  });
+</script> 

@@ -1,0 +1,85 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<footer class="w-full mt-auto">
+  <div class="glass mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 rounded-t-lg border-t border-lavender-200/20 backdrop-blur-md">
+    <div class="py-4 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+      <div class="flex flex-col items-center md:items-start gap-2">
+        <p class="text-sm text-text-muted">
+          {t('footer.developed')} 
+          <a href="https://github.com/bryanchambron" class="text-primary-600 font-medium hover:text-primary-500 hover:underline transition-colors">
+            Paul Berthelot
+          </a>
+        </p>
+        <p class="text-xs text-text-muted opacity-80">
+          © {new Date().getFullYear()} Bryan Chambron. {t('footer.rights')}
+        </p>
+      </div>
+
+      <div class="flex flex-col items-center md:items-end gap-2">
+        <div class="flex gap-3 mb-2">
+          <a 
+            href="https://www.linkedin.com/in/bryan-chambron-54b27b2a9/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="flex items-center justify-center w-7 h-7 rounded-full bg-lavender-300/15 hover:bg-primary-400/25 transition-all duration-200 hover:-translate-y-0.5"
+            aria-label="LinkedIn"
+          >
+            <Icon name="linkedin" class="w-3.5 h-3.5 text-primary-600" />
+          </a>
+
+          <a 
+            href="https://www.instagram.com/bryan_chambron/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="flex items-center justify-center w-7 h-7 rounded-full bg-lavender-300/15 hover:bg-primary-400/25 transition-all duration-200 hover:-translate-y-0.5"
+            aria-label="Instagram"
+          >
+            <Icon name="instagram" class="w-3.5 h-3.5 text-primary-600" />
+          </a>
+        </div>
+        
+        <div class="flex gap-2 text-xs">
+          <a href="/mentions-legales" class="text-text-muted opacity-80 hover:text-primary-500 hover:opacity-100 transition-colors">
+            {t('footer.legal')}
+          </a>
+          <span class="text-text-muted opacity-50">|</span>
+          <a href="/politique-confidentialite" class="text-text-muted opacity-80 hover:text-primary-500 hover:opacity-100 transition-colors">
+            {t('footer.privacy')}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* Styles pour s'assurer que le footer est toujours en bas sans affecter le header */
+  :global(body) {
+    position: relative;
+    min-height: 100vh;
+  }
+
+  :global(main) {
+    padding-bottom: 6rem; /* Espace pour le footer */
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  /* Adaptations pour les petits écrans */
+  @media (max-width: 640px) {
+    :global(main) {
+      padding-bottom: 8rem; /* Plus d'espace sur mobile */
+    }
+  }
+</style>

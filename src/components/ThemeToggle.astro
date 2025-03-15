@@ -1,0 +1,90 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<button id="theme-toggle" class="theme-toggle-btn" aria-label="Changer de thème">
+  <span class="sr-only">Changer de thème</span>
+  <span class="sun-icon text-primary-600 dark:text-primary-400"><Icon name="sun" /></span>
+  <span class="moon-icon text-primary-600 dark:text-primary-400"><Icon name="moon" /></span>
+</button>
+
+<script>
+  // Fonction pour définir et appliquer le thème
+  function setTheme(theme: 'light' | 'dark') {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+    
+    updateToggleButton();
+  }
+  
+  // Mise à jour de l'apparence du bouton
+  function updateToggleButton() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const isDark = document.documentElement.classList.contains('dark');
+    
+    if (themeToggle) {
+      themeToggle.classList.toggle('dark-mode', isDark);
+    }
+  }
+  
+  // Initialiser le thème au chargement de la page
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Appliquer le thème enregistré ou la préférence système
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+    
+    // Ajouter l'écouteur d'événement au bouton
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        setTheme(isDark ? 'light' : 'dark');
+      });
+    }
+  });
+</script>
+
+<style>
+  .theme-toggle-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  
+  .theme-toggle-btn:hover {
+    opacity: 0.7;
+  }
+  
+  .sun-icon {
+    display: none;
+  }
+  
+  .moon-icon {
+    display: block;
+  }
+  
+  .dark-mode .sun-icon {
+    display: block;
+  }
+  
+  .dark-mode .moon-icon {
+    display: none;
+  }
+</style> 

@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return [
+    // Route pour la page française (par défaut)
+    { params: { lang: undefined } },
+    // Route pour la page anglaise
+    { params: { lang: 'en' } },
+  ];
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title={t('about.title')}>
+  <div class="max-w-4xl mx-auto py-8 px-4">
+    <div class="flex flex-wrap gap-8 items-center md:flex-row flex-col-reverse">
+      <div class="flex-1 min-w-[300px]">
+        <h1 class="text-4xl font-bold mb-6">{t('about.title')}</h1>
+        <p class="text-lg leading-relaxed mb-4">{t('about.paragraph1')}</p>
+        <p class="text-lg leading-relaxed mb-4">{t('about.paragraph2')}</p>
+      </div>
+      <div class="flex-1 min-w-[300px]">
+        <img 
+          src="/assets/bryan_chambron_2.heic" 
+          alt="Bryan Chambron" 
+          class="w-full h-auto rounded-lg shadow-md"
+        />
+      </div>
+    </div>
+  </div>
+</Layout> 

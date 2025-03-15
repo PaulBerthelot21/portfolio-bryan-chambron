@@ -1,0 +1,88 @@
+---
+import Navigation from './Navigation.astro';
+import LanguagePicker from './LanguagePicker.astro';
+import ThemeToggle from './ThemeToggle.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+import { Icon } from 'astro-icon/components';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<header class="glass py-3 px-6 sticky top-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+        <div class="text-xl font-bold mb-3 md:mb-0 flex items-center">
+            <a href="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity duration-300 text-primary-600 dark:text-primary-400">
+                <span class="text-xl"><Icon name="microphone" /></span> 
+                <span class="font-medium tracking-wide">{t('nav.title')}</span>
+            </a>
+        </div>
+        <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6 w-full md:w-auto">
+            <Navigation />
+            <div class="hidden md:flex items-center mx-2">
+                <div class="w-[2px] h-3 bg-primary-300/80 dark:bg-primary-600/80 rounded-full animate-pulse mx-[2px]"></div>
+                <div class="w-[2px] h-5 bg-primary-300/80 dark:bg-primary-600/80 rounded-full animate-pulse mx-[2px] animation-delay-200"></div>
+                <div class="w-[2px] h-4 bg-primary-300/80 dark:bg-primary-600/80 rounded-full animate-pulse mx-[2px] animation-delay-500"></div>
+            </div>
+            <div class="flex items-center gap-3">
+                <ThemeToggle />
+                <LanguagePicker />
+            </div>
+        </div>
+    </div>
+</header>
+
+<style>
+    @keyframes pulse {
+        0% {
+            opacity: 0.4;
+            transform: scaleY(0.8);
+        }
+        50% {
+            opacity: 0.8;
+            transform: scaleY(1.1);
+        }
+        100% {
+            opacity: 0.4;
+            transform: scaleY(0.8);
+        }
+    }
+    
+    .animate-pulse {
+        animation: pulse 2s ease infinite;
+    }
+    
+    .animation-delay-200 {
+        animation-delay: 0.2s;
+    }
+    
+    .animation-delay-500 {
+        animation-delay: 0.5s;
+    }
+
+    /* Style pour l'effet glassmorphism */
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+    }
+    
+    .dark header {
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.1));
+    }
+</style>
+
+<script>
+    // Script pour initialiser le thème au chargement initial (pour éviter le flash)
+    const script = document.createElement('script');
+    script.innerHTML = `
+      const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    `;
+    document.head.appendChild(script);
+</script>

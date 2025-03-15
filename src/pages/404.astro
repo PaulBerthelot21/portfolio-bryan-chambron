@@ -1,0 +1,76 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+import Layout from '../layouts/Layout.astro';
+
+// Détecter la langue à partir de l'URL
+const url = Astro.url;
+const lang = getLangFromUrl(url);
+const t = useTranslations(lang);
+
+// URL de retour selon la langue
+const homeUrl = lang === 'fr' ? '/' : `/${lang}/`;
+---
+
+<Layout title={`${t('error.404.title')} - 404`}>
+  <div class="error-container">
+    <h1>404</h1>
+    <h2>{t('error.404.title')}</h2>
+    <p>{t('error.404.message')}</p>
+    <a href={homeUrl} class="btn-back">{t('error.404.back')}</a>
+    
+    <script>
+      // Script qui redirige vers la page 404 en anglais si l'URL commence par /en/
+      const path = window.location.pathname;
+      if (path.startsWith('/en/') && !document.documentElement.lang.includes('en')) {
+        window.location.href = '/en/404';
+      }
+    </script>
+  </div>
+</Layout>
+
+<style>
+  .error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 60vh;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 8rem;
+    margin: 0;
+    color: #333;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    color: #555;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #666;
+    max-width: 500px;
+  }
+
+  .btn-back {
+    display: inline-block;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+
+  .btn-back:hover {
+    background-color: #555;
+  }
+</style> 

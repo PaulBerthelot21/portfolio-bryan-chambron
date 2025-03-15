@@ -1,0 +1,65 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+import { Icon } from 'astro-icon/components';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Créer les URLs en fonction de la langue
+const homeUrl = lang === 'fr' ? '/' : `/${lang}/`;
+const aboutUrl = lang === 'fr' ? '/about/' : `/${lang}/about/`;
+const projectsUrl = lang === 'fr' ? '/projects/' : `/${lang}/projects/`;
+const contactUrl = lang === 'fr' ? '/contact/' : `/${lang}/contact/`;
+
+// Déterminer la page active
+const currentPath = Astro.url.pathname;
+const isHomePage = currentPath === '/' || currentPath === `/${lang}/` || currentPath === `/${lang}`;
+const isAboutPage = currentPath.includes('/about/');
+const isProjectsPage = currentPath.includes('/projects/');
+const isContactPage = currentPath.includes('/contact/');
+---
+
+<nav class="main-nav">
+  <ul class="flex flex-wrap md:flex-nowrap list-none gap-4 md:gap-6 p-0 m-0">
+    <li>
+      <a href={homeUrl} 
+        class:list={[
+          "group flex items-center gap-1 text-gray-700 dark:text-gray-300 no-underline text-sm font-medium transition-colors duration-300 hover:text-primary-600 dark:hover:text-primary-400",
+          { "text-primary-600 dark:text-primary-400 font-semibold": isHomePage }
+        ]}>
+        <Icon name="home" class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity" /> 
+        <span>{t('nav.home')}</span>
+      </a>
+    </li>
+    <li>
+      <a href={aboutUrl} 
+        class:list={[
+          "group flex items-center gap-1 text-gray-700 dark:text-gray-300 no-underline text-sm font-medium transition-colors duration-300 hover:text-primary-600 dark:hover:text-primary-400",
+          { "text-primary-600 dark:text-primary-400 font-semibold": isAboutPage }
+        ]}>
+        <Icon name="user" class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity" /> 
+        <span>{t('nav.about')}</span>
+      </a>
+    </li>
+    <li>
+      <a href={projectsUrl} 
+        class:list={[
+          "group flex items-center gap-1 text-gray-700 dark:text-gray-300 no-underline text-sm font-medium transition-colors duration-300 hover:text-primary-600 dark:hover:text-primary-400",
+          { "text-primary-600 dark:text-primary-400 font-semibold": isProjectsPage }
+        ]}>
+        <Icon name="folder" class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity" /> 
+        <span>{t('nav.projects')}</span>
+      </a>
+    </li>
+    <li>
+      <a href={contactUrl} 
+        class:list={[
+          "group flex items-center gap-1 text-gray-700 dark:text-gray-300 no-underline text-sm font-medium transition-colors duration-300 hover:text-primary-600 dark:hover:text-primary-400",
+          { "text-primary-600 dark:text-primary-400 font-semibold": isContactPage }
+        ]}>
+        <Icon name="envelope" class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity" /> 
+        <span>{t('nav.contact')}</span>
+      </a>
+    </li>
+  </ul>
+</nav> 
