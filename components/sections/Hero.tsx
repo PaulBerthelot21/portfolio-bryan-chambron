@@ -6,6 +6,10 @@ import { Button } from "@/components/ui/button";
 import { fadeIn, slideUp, staggerContainer } from "@/lib/motion";
 import { Radio, Tv, ExternalLink } from "lucide-react";
 import Image from "next/image";
+import { socials } from "@/data/socials";
+
+// Récupérer l'URL Twitch depuis les données
+const twitchUrl = socials.find((s) => s.id === "twitch-streamer")?.url || "#";
 
 const content = {
   radio: {
@@ -14,6 +18,7 @@ const content = {
     description:
       "Passionné par les ondes depuis toujours, j'anime des émissions qui font vibrer les auditeurs. Entre musique, interviews et bonne humeur, je crée des moments uniques à la radio.",
     cta: "Écouter mes émissions",
+    ctaUrl: "https://radiorec.fr/",
     image: "/images/logo_bryan_chambron_animateur.png",
     icon: Radio,
   },
@@ -23,6 +28,7 @@ const content = {
     description:
       "Du gaming aux discussions en live, je partage ma passion avec une communauté incroyable sur Twitch. Rejoins l'aventure et deviens membre de la team !",
     cta: "Rejoindre le stream",
+    ctaUrl: twitchUrl,
     image: "/images/logo_bryan_chambron_streamer.png",
     icon: Tv,
   },
@@ -143,6 +149,7 @@ export function Hero() {
 
                 <div className="flex flex-wrap gap-4 pt-4">
                   <Button
+                    asChild
                     size="lg"
                     className={`group ${
                       mode === "radio"
@@ -150,20 +157,14 @@ export function Hero() {
                         : "bg-purple-600 hover:bg-purple-700 text-white"
                     }`}
                   >
-                    {currentContent.cta}
-                    <ExternalLink className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-                  </Button>
-
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className={
-                      mode === "streamer"
-                        ? "border-purple-700 text-purple-300 hover:bg-purple-900/50"
-                        : ""
-                    }
-                  >
-                    En savoir plus
+                    <a
+                      href={currentContent.ctaUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {currentContent.cta}
+                      <ExternalLink className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                    </a>
                   </Button>
                 </div>
               </motion.div>
