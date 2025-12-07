@@ -28,14 +28,20 @@ const typeIcons = {
   podcast: Podcast,
   video: Video,
   event: Calendar,
+  stream: Video,
 };
 
 export default function ProductionsPage() {
   const { mode } = useMode();
 
-  const activeProductions = productions.filter((p) => p.status === "active");
-  const upcomingProductions = productions.filter((p) => p.status === "upcoming");
-  const archivedProductions = productions.filter((p) => p.status === "archived");
+  // Filtrer par mode ET par statut
+  const filteredProductions = productions.filter(
+    (p) => p.mode === mode || p.mode === "both"
+  );
+
+  const activeProductions = filteredProductions.filter((p) => p.status === "active");
+  const upcomingProductions = filteredProductions.filter((p) => p.status === "upcoming");
+  const archivedProductions = filteredProductions.filter((p) => p.status === "archived");
 
   return (
     <main className="min-h-screen">
@@ -73,14 +79,16 @@ export default function ProductionsPage() {
                 mode === "radio" ? "text-slate-900" : "text-white"
               }`}
             >
-              Mes Productions
+              {mode === "radio" ? "Mes Émissions Radio" : "Mes Créations Stream"}
             </h1>
             <p
               className={`text-lg md:text-xl max-w-2xl mx-auto ${
                 mode === "radio" ? "text-slate-600" : "text-slate-400"
               }`}
             >
-              Découvrez mes émissions, podcasts et créations audiovisuelles.
+              {mode === "radio"
+                ? "Découvrez mes émissions et productions radiophoniques."
+                : "Retrouvez mes streams, vidéos et contenus gaming."}
             </p>
           </motion.div>
         </div>
@@ -92,10 +100,10 @@ export default function ProductionsPage() {
       >
         <div className="container mx-auto px-4">
           <motion.div
+            key={mode}
             variants={staggerContainer}
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+            animate="visible"
             className="space-y-12"
           >
             {/* Header */}

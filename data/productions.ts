@@ -1,4 +1,5 @@
-export type ProductionType = "emission" | "podcast" | "video" | "event";
+export type ProductionType = "emission" | "podcast" | "video" | "event" | "stream";
+export type ProductionMode = "radio" | "streamer" | "both";
 
 export interface Production {
   id: string;
@@ -10,30 +11,59 @@ export interface Production {
   image?: string;
   date?: string;
   status: "active" | "archived" | "upcoming";
+  mode: ProductionMode;
 }
 
 export const productions: Production[] = [
+  // === PRODUCTIONS ANIMATEUR RADIO ===
+  
   {
-    id: "quotivienne",
-    title: "La Quotivienne",
+    id: "bey-sort-et-vous-raconte-sa-vie-de-rockstar",
+    title: "BEY SORT ET VOUS RACONTE SA « VIE DE ROCKSTAR »",
     type: "emission",
     description:
-      "L'émission quotidienne de Radio REC ! Actualités locales, météo, agenda et interviews. Du lundi au samedi, retrouvez toute l'actu du pays Chauvinois.",
+      "Dans votre émission du jour, Il voulait devenir une rockstar et c’en est devenu une . Aujourd’hui je suis avec Bey, pour aborder son dernier single “ Vie de Rockstar ” sortie vendredi 7 mars , son actu , son histoire et sa vie de rockstar .",
     platform: "Radio REC 103.7 FM",
-    url: "https://radiorec.fr/",
+    url: "https://radiorec.fr/bey-sort-et-vous-raconte-sa-vie-de-rockstar/",
     status: "active",
+    mode: "radio",
   },
   {
-    id: "emissions-speciales",
-    title: "Émissions Spéciales",
+    id: "harmattan-brothers",
+    title: "HARMATTAN BROTHERS",
     type: "emission",
     description:
-      "Couverture d'événements locaux en direct : marchés de Noël, festivals, événements sportifs et culturels de la région.",
+      "Dans votre émission du jour, ils seront tous les 3 ce soir au nouveau théâtre de Châtellerault à 20h30 , aujourd'hui je suis avec le groupe Harmattan Brothers , pour aborder leur concert et puis leur actus. ",
     platform: "Radio REC 103.7 FM",
-    url: "https://radiorec.fr/",
+    url: "https://radiorec.fr/harmattan-brothers/",
     status: "active",
+    mode: "radio",
   },
-  // Ajoute ici d'autres productions (podcasts, vidéos, etc.)
+  {
+    id: "french-fresh",
+    title: "French Fresh",
+    type: "emission",
+    description:
+      "FrenchFresh du jour ! Trois vibes, trois artistes, trois ambiances",
+    platform: "TikTok",
+    url: "https://www.tiktok.com/@bryan_lecalme/video/7579193395722145046",
+    status: "active",
+    mode: "radio",
+  },
+  
+
+  // === PRODUCTIONS STREAMER ===
+  {
+    id: "best-of-youtube",
+    title: "Best-of YouTube",
+    type: "video",
+    description:
+      "Les meilleurs moments des streams compilés sur YouTube. Rattrape ce que tu as manqué !",
+    platform: "YouTube",
+    url: "https://www.youtube.com/@LeCalme35",
+    status: "active",
+    mode: "streamer",
+  },
 ];
 
 export const productionTypeLabels: Record<ProductionType, string> = {
@@ -41,6 +71,7 @@ export const productionTypeLabels: Record<ProductionType, string> = {
   podcast: "Podcast",
   video: "Vidéo",
   event: "Événement",
+  stream: "Stream",
 };
 
 export const productionTypeColors: Record<ProductionType, { radio: string; streamer: string }> = {
@@ -60,5 +91,8 @@ export const productionTypeColors: Record<ProductionType, { radio: string; strea
     radio: "bg-green-100 text-green-800",
     streamer: "bg-green-900/50 text-green-300",
   },
+  stream: {
+    radio: "bg-purple-100 text-purple-800",
+    streamer: "bg-purple-900/50 text-purple-300",
+  },
 };
-
