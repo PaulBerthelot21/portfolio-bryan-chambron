@@ -14,7 +14,7 @@ const content = {
     description:
       "Passionné par les ondes depuis toujours, j'anime des émissions qui font vibrer les auditeurs. Entre musique, interviews et bonne humeur, je crée des moments uniques à la radio.",
     cta: "Écouter mes émissions",
-    image: "/animateur.jpg",
+    image: "/images/logo_bryan_chambron_animateur.jpg",
     icon: Radio,
   },
   streamer: {
@@ -23,7 +23,7 @@ const content = {
     description:
       "Du gaming aux discussions en live, je partage ma passion avec une communauté incroyable sur Twitch. Rejoins l'aventure et deviens membre de la team !",
     cta: "Rejoindre le stream",
-    image: "/streamer.jpg",
+    image: "/images/logo_bryan_chambron_streamer.png",
     icon: Tv,
   },
 };
@@ -191,25 +191,16 @@ export function Hero() {
                       : "ring-4 ring-purple-500"
                   }`}
                 >
-                  {/* Placeholder image - remplacer par les vraies images */}
-                  <div
-                    className={`absolute inset-0 flex items-center justify-center ${
-                      mode === "radio"
-                        ? "bg-gradient-to-br from-amber-400 to-orange-500"
-                        : "bg-gradient-to-br from-purple-600 to-violet-800"
-                    }`}
-                  >
-                    <Icon className="w-32 h-32 text-white/50" />
-                  </div>
-
-                  {/* Décommenter quand les images sont disponibles */}
-                  {/* <Image
+                  <Image
+                    key={currentContent.image}
                     src={currentContent.image}
                     alt={currentContent.subtitle}
                     fill
+                    sizes="(max-width: 768px) 288px, 384px"
                     className="object-cover"
                     priority
-                  /> */}
+                    unoptimized
+                  />
                 </div>
 
                 {/* Badge flottant */}

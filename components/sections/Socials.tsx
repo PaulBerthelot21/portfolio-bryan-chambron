@@ -49,6 +49,11 @@ const iconMap = {
 export function Socials() {
   const { mode } = useMode();
 
+  // Filtrer les réseaux selon le mode actuel
+  const filteredSocials = socials.filter(
+    (social) => social.mode === mode || social.mode === "both"
+  );
+
   return (
     <section
       id="socials"
@@ -80,16 +85,21 @@ export function Socials() {
                 mode === "radio" ? "text-slate-600" : "text-slate-400"
               }`}
             >
-              Retrouvez-moi sur toutes les plateformes et rejoignez la communauté !
+              {mode === "radio"
+                ? "Suivez mes aventures radio et mes coulisses !"
+                : "Rejoignez la communauté et ne ratez aucun stream !"}
             </p>
           </motion.div>
 
           {/* Grid de cards */}
           <motion.div
+            key={mode}
             variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {socials.map((social) => {
+            {filteredSocials.map((social) => {
               const IconComponent = iconMap[social.icon];
               return (
                 <motion.div key={social.id} variants={slideUp}>
