@@ -14,9 +14,9 @@ export function ModeToggle() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-4 right-4 z-50 flex items-center gap-3 bg-card/80 backdrop-blur-md border border-border rounded-full px-4 py-2 shadow-lg"
+      className="fixed top-20 left-4 md:top-4 md:right-4 md:left-auto z-50 flex items-center gap-2 md:gap-3 bg-card/90 backdrop-blur-md border border-border rounded-full px-3 py-1.5 md:px-4 md:py-2 shadow-lg"
     >
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1 md:gap-2">
         <Radio
           className={`w-4 h-4 transition-colors ${
             mode === "radio" ? "text-primary" : "text-muted-foreground"
@@ -24,7 +24,7 @@ export function ModeToggle() {
         />
         <Label
           htmlFor="mode-toggle"
-          className={`text-sm font-medium transition-colors cursor-pointer ${
+          className={`text-xs md:text-sm font-medium transition-colors cursor-pointer hidden sm:inline ${
             mode === "radio" ? "text-primary" : "text-muted-foreground"
           }`}
         >
@@ -36,13 +36,13 @@ export function ModeToggle() {
         id="mode-toggle"
         checked={mode === "streamer"}
         onCheckedChange={toggleMode}
-        className="data-[state=checked]:bg-purple-600 data-[state=unchecked]:bg-amber-500"
+        className="data-[state=checked]:bg-purple-600 data-[state=unchecked]:bg-amber-500 scale-90 md:scale-100"
       />
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1 md:gap-2">
         <Label
           htmlFor="mode-toggle"
-          className={`text-sm font-medium transition-colors cursor-pointer ${
+          className={`text-xs md:text-sm font-medium transition-colors cursor-pointer hidden sm:inline ${
             mode === "streamer" ? "text-primary" : "text-muted-foreground"
           }`}
         >
@@ -57,4 +57,3 @@ export function ModeToggle() {
     </motion.div>
   );
 }
-
