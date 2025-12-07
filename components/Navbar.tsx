@@ -51,12 +51,12 @@ export function Navbar() {
         }`}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
+          <div className="grid grid-cols-2 md:grid-cols-3 items-center h-16">
+            {/* Logo - gauche */}
             <Link
               href="/"
               onClick={handleLinkClick}
-              className={`text-xl font-bold ${
+              className={`text-xl font-bold justify-self-start ${
                 mode === "radio" ? "text-slate-900" : "text-white"
               }`}
             >
@@ -65,8 +65,8 @@ export function Navbar() {
               </motion.span>
             </Link>
 
-            {/* Navigation links - Desktop */}
-            <ul className="hidden md:flex items-center gap-8">
+            {/* Navigation links - Desktop - centre */}
+            <ul className="hidden md:flex items-center justify-center gap-8">
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <Link
@@ -85,8 +85,8 @@ export function Navbar() {
               ))}
             </ul>
 
-            {/* Right side: Mode Toggle + Hamburger */}
-            <div className="flex items-center gap-3">
+            {/* Right side: Mode Toggle + Hamburger - droite */}
+            <div className="flex items-center gap-3 justify-self-end">
               {/* Mode Toggle */}
               <div
                 className={`flex items-center gap-2 md:gap-3 px-3 py-1.5 rounded-full border ${
