@@ -10,6 +10,11 @@ import { ExternalLink, Calendar, Tag } from "lucide-react";
 export function Articles() {
   const { mode } = useMode();
 
+  // Filtrer les articles selon le mode actuel
+  const filteredArticles = articles.filter(
+    (article) => article.mode === mode || article.mode === "both"
+  );
+
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("fr-FR", {
       year: "numeric",
@@ -40,6 +45,18 @@ export function Articles() {
         mode === "radio"
           ? "bg-slate-100 text-slate-800"
           : "bg-slate-700/50 text-slate-300",
+      Actualité:
+        mode === "radio"
+          ? "bg-orange-100 text-orange-800"
+          : "bg-orange-900/50 text-orange-300",
+      Émission:
+        mode === "radio"
+          ? "bg-amber-100 text-amber-800"
+          : "bg-amber-900/50 text-amber-300",
+      Interview:
+        mode === "radio"
+          ? "bg-teal-100 text-teal-800"
+          : "bg-teal-900/50 text-teal-300",
     };
     return colors[tag] || colors.Article;
   };
@@ -75,16 +92,21 @@ export function Articles() {
                 mode === "radio" ? "text-slate-600" : "text-slate-400"
               }`}
             >
-              Découvrez mes apparitions dans les médias et articles de presse
+              {mode === "radio"
+                ? "Découvrez mes apparitions radio et articles de presse"
+                : "Retrouvez mes actus streaming et événements gaming"}
             </p>
           </motion.div>
 
           {/* Grid d'articles */}
           <motion.div
+            key={mode}
             variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {articles.map((article) => (
+            {filteredArticles.map((article) => (
               <motion.div key={article.id} variants={slideUp}>
                 <motion.a
                   href={article.url}

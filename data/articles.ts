@@ -1,3 +1,5 @@
+export type ArticleMode = "radio" | "streamer" | "both";
+
 export interface Article {
   id: string;
   title: string;
@@ -6,62 +8,71 @@ export interface Article {
   tag: string;
   date: string;
   description?: string;
+  mode: ArticleMode;
 }
 
 export const articles: Article[] = [
+  // === ARTICLES STREAMER ===
   {
-    id: "1",
-    title: "Bryan Chambron, la nouvelle voix de la radio locale",
-    source: "La Voix du Nord",
-    url: "#",
+    id: "streamer-1",
+    title: "LeCalme revient sur sa chaîne Twitch",
+    source: "Actualité",
+    url: "https://www.twitch.tv/le_calme18",
+    tag: "Actualité",
+    date: "2025-12-17",
+    description: "LeCalme revient sur sa chaîne Twitch, une nouvelle aventure commence !",
+    mode: "streamer",
+  },
+  {
+    id: "streamer-2",
+    title: "LeCalme rejoint le groupe de streamer AFStream",
+    source: "AFStream",
+    url: "https://www.twitch.tv/afstream_",
+    tag: "Actualité",
+    date: "2025-02-12",
+    description: "LeCalme rejoint le groupe de streamers français AFStream pour de nouvelles aventures en live !",
+    mode: "streamer",
+  },
+
+  // === ARTICLES ANIMATEUR RADIO ===
+  {
+    id: "radio-1",
+    title: "Bryan Chambron, nouvelle voix de Radio REC",
+    source: "Radio REC",
+    url: "https://radiorec.fr/",
     tag: "Presse",
-    date: "2024-03-15",
-    description: "Portrait d'un animateur passionné qui révolutionne les ondes.",
+    date: "2024-03-10",
+    description: "Portrait d'un animateur passionné qui dynamise les ondes de Chauvigny.",
+    mode: "radio",
   },
   {
-    id: "2",
-    title: "Le streaming gaming en pleine expansion : interview exclusive",
-    source: "Gamekult",
-    url: "#",
-    tag: "Gaming",
-    date: "2024-02-20",
-    description: "Discussion sur l'évolution du streaming et de la communauté gaming.",
-  },
-  {
-    id: "3",
+    id: "radio-2",
     title: "Podcast : Les coulisses de l'animation radio",
-    source: "Radio France",
-    url: "#",
+    source: "Radio REC",
+    url: "https://radiorec.fr/",
     tag: "Podcast",
     date: "2024-01-10",
-    description: "Bryan partage ses secrets et son parcours dans l'animation.",
+    description: "Bryan partage ses secrets et son parcours dans l'animation radio.",
+    mode: "radio",
   },
   {
-    id: "4",
-    title: "Twitch Rivals : Bryan dans le top 10 des streamers français",
-    source: "Twitch Blog",
-    url: "#",
-    tag: "Événement",
-    date: "2023-12-05",
-    description: "Retour sur une performance exceptionnelle lors du tournoi.",
+    id: "radio-3",
+    title: "La Quotivienne : l'émission qui fait vibrer les auditeurs",
+    source: "Radio REC",
+    url: "https://radiorec.fr/",
+    tag: "Émission",
+    date: "2023-09-15",
+    description: "Découvrez l'émission phare animée par Bryan sur Radio REC 103.7 FM.",
+    mode: "radio",
   },
   {
-    id: "5",
-    title: "L'art de créer du contenu authentique",
-    source: "Medium",
+    id: "radio-4",
+    title: "Interview : Le parcours d'un animateur radio passionné",
+    source: "La Nouvelle République",
     url: "#",
-    tag: "Article",
-    date: "2023-11-18",
-    description: "Réflexions sur la création de contenu et l'engagement communautaire.",
-  },
-  {
-    id: "6",
-    title: "Festival des Créateurs : Bryan Chambron en guest star",
-    source: "YouTube News",
-    url: "#",
-    tag: "Événement",
-    date: "2023-10-22",
-    description: "Participation au plus grand rassemblement de créateurs francophones.",
+    tag: "Interview",
+    date: "2023-06-20",
+    description: "Bryan Chambron se confie sur son amour pour la radio et ses projets.",
+    mode: "radio",
   },
 ];
-

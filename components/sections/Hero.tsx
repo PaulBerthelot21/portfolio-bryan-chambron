@@ -23,7 +23,7 @@ const content = {
     icon: Radio,
   },
   streamer: {
-    title: "Bryan Chambron",
+    title: "LeCalme",
     subtitle: "Streamer & Créateur",
     description:
       "Du gaming aux discussions en live, je partage ma passion avec une communauté incroyable sur Twitch. Rejoins l'aventure et deviens membre de la team !",
