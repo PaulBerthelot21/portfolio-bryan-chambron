@@ -98,14 +98,14 @@ export function Contact() {
                 </CardHeader>
                 <CardContent>
                   <a
-                    href="mailto:contact@bryanchambron.fr"
+                    href="mailto:bryan.chambron@gmail.com"
                     className={`text-lg font-medium transition-colors ${
                       mode === "radio"
                         ? "text-amber-700 hover:text-amber-800"
                         : "text-purple-300 hover:text-purple-200"
                     }`}
                   >
-                    contact@bryanchambron.fr
+                    bryan.chambron@gmail.com
                   </a>
                   <CardDescription
                     className={`mt-2 ${
@@ -146,18 +146,18 @@ export function Contact() {
                   >
                     Pour une réponse rapide, envoyez-moi un DM sur{" "}
                     <a
-                      href="https://twitter.com/bryanchambron"
+                      href="https://www.tiktok.com/@bryan_lecalme"
                       className={`font-medium ${
                         mode === "radio"
                           ? "text-amber-700 hover:text-amber-800"
                           : "text-purple-300 hover:text-purple-200"
                       }`}
                     >
-                      Twitter
+                      TikTok
                     </a>{" "}
                     ou{" "}
                     <a
-                      href="https://instagram.com/bryanchambron"
+                      href="https://www.instagram.com/bryan_chambron/"
                       className={`font-medium ${
                         mode === "radio"
                           ? "text-amber-700 hover:text-amber-800"

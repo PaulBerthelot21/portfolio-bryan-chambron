@@ -96,6 +96,8 @@ export function Footer() {
               }`}
               fill="currentColor"
             />
+            <span>par <a href="https://www.linkedin.com/in/paul-berthelot-012198198/" target="_blank" 
+            rel="noopener noreferrer" className="text-blue-500 hover:text-blue-600">Paul Berthelot</a></span>
           </div>
         </motion.div>
       </div>

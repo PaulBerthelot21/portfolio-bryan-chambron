@@ -14,7 +14,7 @@ const content = {
     description:
       "Passionné par les ondes depuis toujours, j'anime des émissions qui font vibrer les auditeurs. Entre musique, interviews et bonne humeur, je crée des moments uniques à la radio.",
     cta: "Écouter mes émissions",
-    image: "/images/logo_bryan_chambron_animateur.jpg",
+    image: "/images/logo_bryan_chambron_animateur.png",
     icon: Radio,
   },
   streamer: {
