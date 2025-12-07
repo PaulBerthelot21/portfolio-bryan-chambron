@@ -16,7 +16,7 @@ export const articles: Article[] = [
   {
     id: "streamer-1",
     title: "LeCalme revient sur sa chaîne Twitch",
-    source: "Actualité",
+    source: "Twitch",
     url: "https://www.twitch.tv/le_calme18",
     tag: "Actualité",
     date: "2025-12-17",
@@ -26,7 +26,7 @@ export const articles: Article[] = [
   {
     id: "streamer-2",
     title: "LeCalme rejoint le groupe de streamer AFStream",
-    source: "AFStream",
+    source: "Twitch",
     url: "https://www.twitch.tv/afstream_",
     tag: "Actualité",
     date: "2025-02-12",
