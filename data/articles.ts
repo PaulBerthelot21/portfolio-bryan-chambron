@@ -37,7 +37,7 @@ export const articles: Article[] = [
   // === ARTICLES ANIMATEUR RADIO ===
   {
     id: "radio-1",
-    title: "Bryan Chambron, nouvelle voix de Radio REC",
+    title: "Nouvelle voix de Radio REC",
     source: "Radio REC",
     url: "https://radiorec.fr/",
     tag: "Actualité",
@@ -47,12 +47,12 @@ export const articles: Article[] = [
   },
   {
     id: "radio-2",
-    title: "Bryan Chambron (LeCalme) sur Radio Parole de Vie",
-    source: "Radio Parole de Vie",
-    url: "https://www.youtube.com/watch?v=tspcxr4UwzI",
-    tag: "Interview",
-    date: "2022-02-22",
-    description: "Bryan Chambron (LeCalme) sur Radio Parole de Vie, une interview exclusive !",
+    title: "Diplôme obtenu à la SKOL",
+    source: "SKOL",
+    url: "https://www.laskol.fr/",
+    tag: "Actualité",
+    date: "2024-07-15",
+    description: "Valide son parcours à la SKOL ( école de radio / promo 10 ATH (animateur technicien réalisateur )",
     mode: "radio",
-  }
+  },
 ];

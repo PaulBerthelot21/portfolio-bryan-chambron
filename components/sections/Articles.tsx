@@ -115,7 +115,7 @@ export function Articles() {
                   initial="rest"
                   whileHover="hover"
                   variants={hoverCard}
-                  className="block h-full"
+                  className="block h-full rounded-full"
                 >
                   <Card
                     className={`h-full transition-all group ${
