@@ -68,17 +68,21 @@ export function Footer() {
 
           {/* Navigation */}
           <nav className="flex flex-wrap justify-center gap-6">
-            {["Accueil", "Réseaux", "Médias", "Contact"].map((item) => (
+            {[
+              { name: "Accueil", href: "/" },
+              { name: "Parcours", href: "/parcours" },
+              { name: "Productions", href: "/productions" },
+            ].map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.name}
+                href={item.href}
                 className={`text-sm transition-colors ${
                   mode === "radio"
                     ? "text-slate-600 hover:text-amber-700"
                     : "text-slate-400 hover:text-purple-300"
                 }`}
               >
-                {item}
+                {item.name}
               </a>
             ))}
           </nav>
