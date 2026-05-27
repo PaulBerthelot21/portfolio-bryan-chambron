@@ -29,13 +29,13 @@ export const productions: Production[] = [
     mode: "radio",
   },
   {
-    id: "harmattan-brothers",
-    title: "HARMATTAN BROTHERS",
+    id: "les-dessous-du-roi-soleil-le-retour",
+    title: "LES DESSOUS DU ROI SOLEIL : Le Retour",
     type: "emission",
     description:
-      "Dans votre émission du jour, ils seront tous les 3 ce soir au nouveau théâtre de Châtellerault à 20h30 , aujourd'hui je suis avec le groupe Harmattan Brothers , pour aborder leur concert et puis leur actus. ",
+      "Plonger dans les coulisses d’un monument du spectacle musical français.",
     platform: "Radio REC 103.7 FM",
-    url: "https://radiorec.fr/harmattan-brothers/",
+    url: "https://radiorec.fr/les-dessous-du-roi-soleil-le-retour/",
     status: "active",
     mode: "radio",
   },
